@@ -16,13 +16,14 @@ class HangpersonGame
   end
 
   def guess(letter)
-    raise ArgumentError if letter.nil? ||letter.empty? || letter.match?(/[^a-zA-Z]/)
+    raise ArgumentError if letter.nil? ||
+                           letter.empty? ||
+                           letter.match?(/[^a-zA-Z]/)
     letter.downcase!
     unless @wrong_guesses.include?(letter) || @guesses.include?(letter)
-      word.include?(letter) ? @guesses << letter : @wrong_guesses << letter
-    else
-      false
+      return word.include?(letter) ? @guesses << letter : @wrong_guesses << letter
     end
+    false
   end
 
   def word_with_guesses
