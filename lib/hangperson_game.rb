@@ -27,15 +27,17 @@ class HangpersonGame
   end
 
   def word_with_guesses
-    current_guess = ''
-    @word.each_char do |chr|
-      if @guesses.include? chr
-        current_guess << chr
-      else
-        current_guess << '-'
-      end
-    end
-    current_guess
+    word.gsub(/[^#{guesses}\W]/,'-')
+
+    # current_guess = ''
+    # @word.each_char do |chr|
+    #   if @guesses.include? chr
+    #     current_guess << chr
+    #   else
+    #     current_guess << '-'
+    #   end
+    # end
+    #current_guess
   end
 
   def check_win_or_lose
